@@ -17,7 +17,7 @@ public class Solution {
         while(low < high){
 
             //若low 或 high 对应character值不在low1 high1 区间 就 改变 low  high
-            if( (s.charAt(low) < low1 || s.charAt(low) > high1) &&
+            if( (s.charAt(low) < low1 || s.charAt(low) > high1) &&//注意（）  必须得有！！！！！！！！！！！！！！！！！！！！
                 (s.charAt(low) < low2 || s.charAt(low) > high2) ){
                     low++;
                     continue;

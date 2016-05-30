@@ -1,71 +1,36 @@
-
-class ResultType {
-    boolean is_bst;
-    int maxValue, minValue;
-    
-    ResultType(boolean is_bst, int maxValue, int minValue) { // max 在min前 
-        this.is_bst = is_bst;
-        this.maxValue = maxValue;
-        this.minValue = minValue;
-    }
-}
-
+/**
+ * Definition of TreeNode:
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
+ * }
+ */
 public class Solution {
     /**
      * @param root: The root of binary tree.
      * @return: True if the binary tree is BST, or false
      */
     public boolean isValidBST(TreeNode root) {
-        ResultType r = validateHelper(root);
-        return r.is_bst;
-    }
-    
-    private ResultType validateHelper(TreeNode root) {
-        if (root == null) {
-            return new ResultType(true, Integer.MIN_VALUE, Integer.MAX_VALUE); // 此处为何min max 调换位置 构造函数max在前？？？？？？？？？
-        }
-        
-        ResultType left = validateHelper(root.left);
-        ResultType right = validateHelper(root.right);
-        
-        if (!left.is_bst || !right.is_bst) {
-            // if is_bst is false then minValue and maxValue are useless
-            return new ResultType(false, 0, 0);
-        }
-        
-        if (root.left != null && left.maxValue >= root.val || 
-              root.right != null && right.minValue <= root.val) {
-            return new ResultType(false, 0, 0);
-        }
-        
-        return new ResultType(true,
-                              Math.max(root.val, right.maxValue),     // 此处又 max在前？？？？？？？？？？？
-                              Math.min(root.val, left.minValue));
-    }
-}
-
-
-public class Solution {
-    private int lastVal = Integer.MIN_VALUE;
-    private boolean firstNode = true;   // 代表着什么？？？？？？
-    public boolean isValidBST(TreeNode root) {
+        // write your code here
         if (root == null) {
             return true;
         }
-        if (!isValidBST(root.left)) {
+        long min = Long.MIN_VALUE;//此处是long 决定 下边isValidBST用long  并且得强制转换成long
+        long max = Long.MAX_VALUE;//并且得是用Long来初始化min max
+        return isValidBST(root, min, max);
+    }
+    private boolean isValidBST(TreeNode root, long min, long max) {
+        if (root == null) {
+            return true;
+        }
+        if (root.val <= min || root.val >= max) {
             return false;
         }
-        if (!firstNode && lastVal >= root.val) { //？？？
-            return false;
-        }
-        firstNode = false;
-        lastVal = root.val;
-        if (!isValidBST(root.right)) {
-            return false;
-        }
-        return true;
+        return isValidBST(root.left, min, (long)root.val) && isValidBST(root.right, (long)root.val, max);
     }
 }
-
-
 

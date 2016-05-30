@@ -1,3 +1,10 @@
+第一个节点下边是最后一个 下一个是第二个
+然后是倒数第二个
+
+找中点
+逆序
+穿插
+
 /**
  * Definition for ListNode.
  * public class ListNode {
@@ -22,7 +29,9 @@ public class Solution {
         
         //拆分
 		/*
-			不过这道题要找linkedlist中点，那当然就要用最经典的faster和slower方法，faster速度是slower的两倍，当faster到链尾时，slower就是中点，slower的next是下一半的开始点。
+			不过这道题要找linkedlist中点，那当然就要用最经典的faster和slower方法，
+			faster速度是slower的两倍，
+			当faster到链尾时，slower就是中点，slower的next是下一半的开始点。
 		*/
         ListNode firstHalf = head, slow= head, fast = head;
         while(fast.next != null && fast.next.next != null){
@@ -31,7 +40,7 @@ public class Solution {
         }
         ListNode secondHalf = slow.next;
         slow.next = null;// fast.next.next == null
-        secondHalf = reverseList(secondHalf);
+        secondHalf = reverseList(secondHalf);//需要这个节点 reverse不能返回void
 		
 		//把俩list 交织地加进去
         while(secondHalf != null){
@@ -53,7 +62,7 @@ public class Solution {
         ListNode preCurr = head;
         while(current != null){
             ListNode post = current.next;
-            current.next = preCurr;
+            current.next = preCurr;//先往回走 再往后走
             preCurr = current; // preCurr 是被指向的那个结点的前边那个结点，也就是换顺序后的头结点
             current = post;
         }

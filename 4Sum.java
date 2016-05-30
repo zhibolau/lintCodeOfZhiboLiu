@@ -16,9 +16,9 @@ public class Solution {
         Arrays.sort(numbers);//别忘了此步！！！！！！！！！！
         for(int i=0; i<len-3; i++){
             for(int j = i+1; j<len-2; j++){
-                int start = j + 1;
+                int start = j + 1;//start得从j+1开始
                 int end = len - 1;
-                while(start < end){
+                while(start < end){//得是 start小于end才能计算sum
                     int sum = numbers[i] + numbers[j] +numbers[start] +numbers[end];
                     if(sum == target){
                         ArrayList<Integer> temp = new ArrayList<Integer>();

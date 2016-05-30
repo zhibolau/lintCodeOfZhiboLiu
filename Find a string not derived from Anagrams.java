@@ -51,7 +51,7 @@ public class Solution {
      * @param strs: A list of strings
      * @return: A list of strings
      */
-    private int getHash(int[] count) {
+    private int getHash(int[] count) {//计算一个int数组的hashcode
         int hash = 0;
         for (int i : count) {
             hash = hash * 33 + i;
@@ -64,11 +64,11 @@ public class Solution {
         if (strs == null || strs.length == 0) {
             return rst;
         }
-        Map<Integer, List<String>> map = new HashMap<Integer, List<String>>();
-        for (String s : strs) {
+        Map<Integer, List<String>> map = new HashMap<Integer, List<String>>();//里面放的是当前数组的hash值 与对应的数组
+        for (String s : strs) {//str由26个字母组成的
             int[] count = new int[26];
             for (int i = 0; i < s.length(); i++) {
-                count[s.charAt(i) - 'a']++;
+                count[s.charAt(i) - 'a']++;//把此str的各个字符放入count数组中 准备计算hash
             }
             int hash = getHash(count);
             if (!map.containsKey(hash)) {
@@ -77,7 +77,7 @@ public class Solution {
             map.get(hash).add(s);
         }
         for (List<String> temp : map.values()) {
-            if (temp.size() > 1) {
+            if (temp.size() > 1) {//只有一个不是anagram的str
                 rst.addAll(temp);
             }
         }

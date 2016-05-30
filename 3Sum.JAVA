@@ -12,8 +12,10 @@ public class Solution {
         }
         
         Arrays.sort(numbers);
-        for(int i = 0; i<len - 2; i++){// -2是因为要有start 跟 end 要3个index
+        for(int i = 0; i<len - 2; i++){// -2是因为要有start 跟 end 要3个index  要给start跟end留下两个位置
             if(i == 0 || numbers[i] > numbers[i-1]){//后边的数要比前边大 要是一样大就不进入此loop 用来消除duplicate
+			//若遇numbers[i] == numbers[i-1]) 就跳过 直接i++ 因为若上次已经成立 不要重复的 所以跳过！@！@@@@@@@@@！！！！！！！！！！！！！
+			//i==0 确保要进入一次此循环 万一给的是-1 -1 2呢
                 int negate = -numbers[i];
                 
                 int start = i + 1;
@@ -30,6 +32,7 @@ public class Solution {
                         start++;
                         end--;
                         //用来remove start 跟end的重复数字
+						//因为上边start已经++了 所以要看当前数与之前数是否一样 一样就再++ end同理！！！！！！！！！！！！！
                         while(start < end && numbers[start] == numbers[start - 1]){
                             start ++;
                         }

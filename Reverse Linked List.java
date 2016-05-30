@@ -22,7 +22,7 @@ public class Solution {
         ListNode pre = head, cur = head.next;
         while(cur !=null){
             ListNode post = cur.next;
-            cur.next = pre;
+            cur.next = pre; //cur.next反向 pre cur都往后走
             pre = cur;
             cur = post;
         }

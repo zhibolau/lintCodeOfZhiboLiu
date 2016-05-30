@@ -27,7 +27,7 @@ public class Solution {
             while(start <  end){
                 int sum = numbers[i] + numbers[start] + numbers[end];
                 if(Math.abs(target - sum) < min){//遇到closest就要想到abs，因为左右两边都可以接近
-                    min = Math.abs(target - sum);
+                    min = Math.abs(target - sum);//找到min 用val记录当前sum值
                     val = sum;
                 }
                 if (target == sum){
