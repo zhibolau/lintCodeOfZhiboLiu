@@ -9,6 +9,9 @@
  *     }
  * }
  */
+ 
+ 找到sum为target的所有path
+ 
 public class Solution {
     /**
      * @param root the root of binary tree

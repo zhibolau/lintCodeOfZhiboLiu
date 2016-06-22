@@ -39,7 +39,7 @@ public class WordDictionary {
 			if(tmpRoot.next[c - 'a'] == null){   //若那位置是空 就new一个以c为内容的trieNode              
 				tmpRoot.next[c - 'a'] = new TrieNode(c);               
 			} 
-			//那个地方有东西 就把root挪位置
+			//那个地方有东西 就把root挪位置  root要挪动到当前字母位置 因为将来要从这个位置开始加入新字母
 			tmpRoot = tmpRoot.next[c - 'a'];         
 		}
 		

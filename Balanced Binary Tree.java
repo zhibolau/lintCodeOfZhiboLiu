@@ -1,5 +1,7 @@
-/**
- * Definition of TreeNode:
+ /**
+ * Definition of Tre‘e、、、】
+ 
+ Node:
  * public class TreeNode {
  *     public int val;
  *     public TreeNode left, right;

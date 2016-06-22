@@ -17,23 +17,23 @@ public ArrayList<String> anagrams(String[] strs) {
      
      HashMap<String,ArrayList<String>> hm = new HashMap<String, ArrayList<String>>();
      
-     for (String s:strs){
+     for (String s:strs){ //ab ba cd 
          char[] temp=s.toCharArray();
          Arrays.sort(temp);// 每个string都换成 char[] 再sort 若是变形词就会变成一样的 like 从abc bac 都会变成 abc
-         String tempStr=new String(temp);//又从char[]换成string了
+         String tempStr=new String(temp);//又从char[]换成string了  ab ab cd 
          
          if (hm.containsKey(tempStr)){// containsKey!!!!!!!!!!!!!!!!!!!!
              if(hm.get(tempStr).size() == 1){
 				 //若已经有一个数了 就把它放入res 因为第一次只是把它放入了tempList！！！！！！！！！！
-				result.add(hm.get(tempStr).get(0));
+				result.add(hm.get(tempStr).get(0)); //res:[ab] ab是来自上次的ab 不是这次ba变成的ab
 			 }
-             hm.get(tempStr).add(s);
-             result.add(s);
+             hm.get(tempStr).add(s);//[ab,ba]
+             result.add(s);//res:[ab,ba]
          }else{
              ArrayList<String> tempList=new ArrayList<String>();
              tempList.add(s);//s还是原来顺序那个词 
              hm.put(tempStr, tempList);// HASHMAP用来记录排序过后的那个string跟 加入s后的那个tempList 之后再把string从tempList中加入到res中
-             }
+             }// ab,[ab] cd,[cd] 此时不放入 得看接下来有没有变形词 所以用hm.get(tempStr).size() == 1来检查 有的话再加入res中
         }
         return result;
  }

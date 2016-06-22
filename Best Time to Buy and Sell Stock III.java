@@ -66,11 +66,11 @@ public int maxProfit(int[] prices) {
         
         int max = prices[len - 1];
         int[] b = new int[len];
-        
-        for(int j = len-2; j >=0; j--){
+		for(int j = len-2; j >=0; j--){
             max = Math.max(max, prices[j]); //卖出价尽量大
             b[j] = Math.max(b[j+1], max-prices[j]);
         }
+		
         int maxProfit = 0;
         for(int k=0; k<len; k++){
             maxProfit = Math.max(maxProfit, a[k]+b[k]);

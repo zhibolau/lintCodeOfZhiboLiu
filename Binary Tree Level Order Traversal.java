@@ -56,7 +56,7 @@ public class Solution {
         if (root == null) //此步骤别忘了！！！！
 			return;
         ArrayList<Integer> temp;//再此声明！！！
-        if (result.size() < depth){
+        if (result.size() < depth){ //用来查看本层是不是还有未加入的元素
 			/*
 				ArrayList<Integer> temp = new ArrayList<Integer>();
         if(res.size() < level){
