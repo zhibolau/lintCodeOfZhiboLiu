@@ -41,14 +41,14 @@ public class Solution {
 		//是否因为要用到can[0]= true; 所以下边才从1 开始？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
         for (int i = 1; i <= len; i++){
             //can[i]=false; 不写这个没事 测试了
-            for (int j = 1; j<=maxLen && j<=i; j++){//不要忘写int
+            for (int j = 1; j<=maxLen && j<=i; j++){//不要忘写int   j是用来看从i到j的这个子串是dict中的吗
             //j比maxLen没意义 单词不能比他长
-                if (!can[i - j]){//若头字母都是false就不必执行下边
+                if (!can[i - j]){//若头字母都是false就不必执行下边 说得对！   
                     continue;
                 }
                 String word = s.substring(i-j, i);// 头字母是true就截取出word 然后检查
                 if (dict.contains(word)){
-                    can[i]=true;
+                    can[i]=true;// 当前word在dict中 才会设置can对应位置为true
                     break;
                 }
             }
