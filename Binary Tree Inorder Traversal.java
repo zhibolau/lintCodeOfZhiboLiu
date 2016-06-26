@@ -46,7 +46,7 @@ public ArrayList<Integer> inorderTraversal(TreeNode root) {
     LinkedList<TreeNode> stack = new LinkedList<TreeNode>();  
     while(root!=null || !stack.isEmpty()){  
         if(root!=null){
-            stack.push(root);
+            stack.push(root); //只是push上去 但是不处理它 直到找到最左边的最下边的
             root = root.left; 
         }else{  
             root = stack.pop();
