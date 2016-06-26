@@ -1,3 +1,81 @@
+//use hashset to avoid repeated arrays saves more codes
+
+
+public class Solution {
+    /**
+     * @param numbers : Give an array numbers of n integer
+     * @return : Find all unique triplets in the array which gives the sum of zero.
+     */
+    public ArrayList<ArrayList<Integer>> threeSum(int[] numbers) {
+        // write your code here
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        HashSet<ArrayList<Integer>> hs = new HashSet<ArrayList<Integer>>();
+        if(numbers == null || numbers.length <= 2){
+            return res;
+        }
+        int len = numbers.length;
+        Arrays.sort(numbers);
+        
+        for(int i = 0; i < len - 2; i++){
+            
+            int left = i + 1;
+            int right = len - 1;
+            
+            while(left < right){
+                int sum = numbers[i] + numbers[left] + numbers[right];
+                
+                if(sum == 0){
+                    ArrayList<Integer> temp = new ArrayList<Integer>();
+                    temp.add(numbers[i]);
+                    temp.add(numbers[left]);
+                    temp.add(numbers[right]);
+                    if(!hs.contains(temp)){
+                        res.add(temp);
+                        hs.add(temp);
+                    }
+                    
+                    left++;
+                    right--;
+					
+                }
+                else if(sum > 0){
+                    right--;
+                }
+                else{
+                    left++;
+                }
+            }
+        }
+        
+        return res;
+        
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class Solution {
     /**
      * @param numbers : Give an array numbers of n integer
