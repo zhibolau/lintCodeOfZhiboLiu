@@ -30,7 +30,6 @@ public String shift(String s, int key) {
 
 
 
-
 public static String shift(String s) { 
                 // 把所有字符串都转成以a开头的,+26是为了防止c - s.charAt(0)为负数
                 for (int i = 0; i < s.length(); i++) { 
