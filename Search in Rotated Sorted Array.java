@@ -48,3 +48,6 @@ public class Solution {
     }
 }
 
+// start  target num  //所有target 在start 跟mid 中间
+// num  start target end  2 5  6  7
+
