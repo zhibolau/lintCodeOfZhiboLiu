@@ -24,9 +24,11 @@ class Solution {
                 int j;
                 for (j=0; j<tLength; j++){
                     if (source.charAt(i+j) != target.charAt(j)){
+						//从新的起点i再找
                         break;
                     }
                 }
+				//一直到tLen的时候还都一样就是找到target了
                 if (j == target.length()) {
                 return i;
                 }

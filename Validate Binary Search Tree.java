@@ -34,3 +34,30 @@ public class Solution {
     }
 }
 
+
+
+
+//第一种方法是中序遍历法。
+
+//因为如果是BST的话，中序遍历数一定是单调递增的，如果违反了这个规律，就返回false。
+
+public boolean isValidBST(TreeNode root) {  
+    ArrayList<Integer> pre = new ArrayList<Integer>();  
+    pre.add(null);  
+    return helper(root, pre);  
+}  
+private boolean helper(TreeNode root, ArrayList<Integer> pre)  
+{  
+    if(root == null)  
+        return true; 
+    
+    boolean left = helper(root.left,pre); 
+    
+    if(pre.get(pre.size()-1)!=null && root.val<=pre.get(pre.size()-1))  
+        return false;  
+    pre.add(root.val);  
+    
+    boolean right = helper(root.right,pre);
+    return left && right;  
+}
+
