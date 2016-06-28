@@ -1,6 +1,13 @@
 Determine whether an integer is a palindrome. Do this without extra space.
 
 
+/*
+It turns out that comparing from the two ends is easier. First, 
+compare the first and last digit. If they are not the same, 
+it must not be a palindrome. If they are the same, chop off 
+one digit from both ends and continue until you have no digits left, 
+which you conclude that it must be a palindrome.
+*/
 
 public class Solution {
     public boolean isPalindrome(int x) {
