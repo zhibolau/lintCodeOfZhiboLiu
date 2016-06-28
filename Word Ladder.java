@@ -16,6 +16,12 @@ public class Solution {
         int nextnum = 0;//counter for next level 下一层中有几个单词要替换
         
         wordQueue.add(start);
+		
+		if(start.equals(end)){
+            return level;
+        }
+		
+		
         
         while(!wordQueue.isEmpty()){
             String word = wordQueue.poll();
@@ -118,6 +124,11 @@ public class Solution {
         LinkedList<String> wordQueue = new LinkedList<String>();
         wordQueue.add(start);
         
+		if(start.equals(end)){
+            return level;
+        }
+		
+		
         while(!wordQueue.isEmpty()){
             String word = wordQueue.poll();
             curNum--;
